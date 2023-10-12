@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Details.dart';
+import 'package:newapp/Login.dart';
 import 'package:newapp/firstclass.dart';
 
 void main() {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: firstclass()
+      home: login(),
     );
   }
 }
