@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/Cart.dart';
 import 'package:newapp/Details.dart';
 import 'package:newapp/Login.dart';
 import 'package:newapp/firstclass.dart';

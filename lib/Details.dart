@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:newapp/Cart.dart';
+import 'package:newapp/api/getapi.dart';
 
 class details extends StatefulWidget{
   @override
@@ -29,6 +31,7 @@ int _current=0;
     // TODO: implement initState
     super.initState();
     getitems();
+    GetApi.getNewData();
   }
   @override
   Widget build(BuildContext context) {
@@ -175,23 +178,29 @@ int _current=0;
 
                             //add to cart
                             Center(
-                              child: Container(
-                                  height: 70,
+                              child: GestureDetector(onTap: (){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context)=> cart()));
+                              } ,
+                                child: Container(
+                                    height: 70,
 
-                                  width: size.width,
-                                  decoration: BoxDecoration(
-                                    color: Colors.orange,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(30),
-                                      topRight: Radius.circular(30),
-                                    ),
+                                    width: size.width,
+                                    decoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        topRight: Radius.circular(30),
+                                      ),
 
-                                  ),   child: Center(
-                                child: const Text(
-                                  "Add to Cart"
-                                  ,style: TextStyle(color: Colors.white,
-                                    fontWeight: FontWeight.bold,fontSize: 14),),
-                              )
+                                    ),   child: Center(
+                                  child: const Text(
+                                    "Add to Cart"
+                                    ,style: TextStyle(color: Colors.white,
+                                      fontWeight: FontWeight.bold,fontSize: 14),),
+                                )
+                                ),
                               ),
                             )
                           ],

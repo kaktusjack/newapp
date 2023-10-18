@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newapp/Details.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
   @override
@@ -15,6 +16,32 @@ class login extends StatefulWidget {
 
   TextEditingController passwordcontroller= TextEditingController();
   TextEditingController emailcontroller= TextEditingController();
+  bool isloading= false;
+  readfromstorage()async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var email= prefs.get('email');
+    var password= prefs.get('password');
+    if(email== null){
+
+    }
+    else{
+      setState(() {
+        emailcontroller.text= email.toString();
+        passwordcontroller.text= password.toString();
+        isloading=true;
+
+      });
+      Navigator.push(context,
+      MaterialPageRoute(builder: (context)=>details()));
+    }
+
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    readfromstorage();
+  }
     @override
     Widget build(BuildContext context) {
       // TODO: implement build
@@ -125,8 +152,13 @@ class login extends StatefulWidget {
                     ),
                     SizedBox(height: 20,),
                     GestureDetector(
-                      onTap: (){
+                      onTap: ()async{
                         if(emailcontroller.text.contains("@")&& passwordcontroller.text.isNotEmpty){
+                          // Obtain shared preferences.
+                          final SharedPreferences prefs = await SharedPreferences.getInstance();
+                          prefs.setString('email',emailcontroller.text );
+                          prefs.setString('password',passwordcontroller.text );
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context)=> details()),
@@ -134,10 +166,13 @@ class login extends StatefulWidget {
                         }
                         else{
 
+
                         }
 
                       },
-                      child: Container(
+                      child:isloading==true?Container(
+                        child: CircularProgressIndicator(),
+                      ) :Container(
                         height: 45,
                         width: 100,
                         decoration: BoxDecoration(
