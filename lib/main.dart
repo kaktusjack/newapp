@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/Cart.dart';
-import 'package:newapp/Details.dart';
-import 'package:newapp/Login.dart';
-import 'package:newapp/firstclass.dart';
+import 'package:newapp/pages/Cart.dart';
+import 'package:newapp/pages/Details.dart';
+import 'package:newapp/pages/Login.dart';
+import 'package:newapp/pages/firstclass.dart';
+import 'package:newapp/pages/maps/mapspage.dart';
+import 'package:newapp/pages/newsclass.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: login(),
+      home: const MapSample(),
     );
   }
 }

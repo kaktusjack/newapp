@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:newapp/Cart.dart';
+import 'package:newapp/pages/Cart.dart';
 import 'package:newapp/api/getapi.dart';
 
 class details extends StatefulWidget{
