@@ -31,8 +31,10 @@ class login extends StatefulWidget {
         isloading=true;
 
       });
-      Navigator.push(context,
-      MaterialPageRoute(builder: (context)=>details()));
+      // Navigator.push(context,
+      // MaterialPageRoute(builder: (context)=>details()));
+      Navigator.of(context).pushNamed('/newsui',arguements:false);
+
     }
 
   }
@@ -158,11 +160,12 @@ class login extends StatefulWidget {
                           final SharedPreferences prefs = await SharedPreferences.getInstance();
                           prefs.setString('email',emailcontroller.text );
                           prefs.setString('password',passwordcontroller.text );
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context)=> details()),
-                          );
+                          //
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(builder: (context)=> details()),
+                          // );
+                          Navigator.of(context).pushNamed('/newsui',arguements:false);
                         }
                         else{
 

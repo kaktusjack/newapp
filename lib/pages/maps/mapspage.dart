@@ -67,6 +67,15 @@ class MapSampleState extends State<MapSample> {
           showmap ? GoogleMap(
             mapType: MapType.hybrid,
             initialCameraPosition: _kGooglePlex,
+            markers: {
+              const Marker(markerId: const  MarkerId('kupondole'),
+              position: LatLng(27.686127, 85.317665),
+              infoWindow: InfoWindow(
+                title: "kupondole",
+                snippet: "test case"
+              ) ,
+              )
+            },
             onMapCreated: (GoogleMapController controller) {
               //theme code here
               controller.setMapStyle(maptheme);
